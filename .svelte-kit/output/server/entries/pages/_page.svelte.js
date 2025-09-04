@@ -1,114 +1,11 @@
-import { f as current_component, h as head, i as bind_props, c as pop, p as push, j as ensure_array_like, k as attr_style, l as attr_class, e as escape_html, m as stringify } from "../../chunks/index.js";
-import { h as fallback } from "../../chunks/utils.js";
-import "d3";
+import { f as current_component, h as ensure_array_like, i as head, j as attr_style, k as attr_class, e as escape_html, l as stringify, c as pop, p as push } from "../../chunks/index.js";
+import "clsx";
 function onDestroy(fn) {
   var context = (
     /** @type {Component} */
     current_component
   );
   (context.d ??= []).push(fn);
-}
-function D3ScatterPlot($$payload, $$props) {
-  push();
-  let width = fallback($$props["width"], 600);
-  let height = fallback($$props["height"], 400);
-  let data = fallback($$props["data"], () => [], true);
-  const defaultData = [
-    {
-      x: 10,
-      y: 20,
-      label: "Point A",
-      category: "Type 1"
-    },
-    {
-      x: 25,
-      y: 30,
-      label: "Point B",
-      category: "Type 2"
-    },
-    {
-      x: 40,
-      y: 15,
-      label: "Point C",
-      category: "Type 1"
-    },
-    {
-      x: 55,
-      y: 45,
-      label: "Point D",
-      category: "Type 3"
-    },
-    {
-      x: 30,
-      y: 35,
-      label: "Point E",
-      category: "Type 2"
-    },
-    {
-      x: 70,
-      y: 25,
-      label: "Point F",
-      category: "Type 1"
-    },
-    {
-      x: 45,
-      y: 50,
-      label: "Point G",
-      category: "Type 3"
-    },
-    {
-      x: 60,
-      y: 10,
-      label: "Point H",
-      category: "Type 2"
-    },
-    {
-      x: 80,
-      y: 40,
-      label: "Point I",
-      category: "Type 1"
-    },
-    {
-      x: 20,
-      y: 45,
-      label: "Point J",
-      category: "Type 3"
-    }
-  ];
-  data.length > 0 ? data : defaultData;
-  head($$payload, ($$payload2) => {
-    $$payload2.out += `<style>
-		.d3-tooltip {
-			position: absolute;
-			text-align: left;
-			padding: 8px;
-			font-size: 12px;
-			background: rgba(0, 0, 0, 0.8);
-			color: white;
-			border: 0px;
-			border-radius: 4px;
-			pointer-events: none;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-		}
-		
-		.scatterplot-container {
-			display: flex;
-			justify-content: center;
-			margin: 20px 0;
-		}
-		
-		.dot {
-			transition: all 0.2s ease;
-		}
-		
-		.dot:hover {
-			filter: brightness(1.2);
-		}
-	</style>`;
-  });
-  $$payload.out += `<div class="scatterplot-container"><svg></svg></div>`;
-  bind_props($$props, { width, height, data });
-  pop();
 }
 function TableOfContents($$payload, $$props) {
   push();
@@ -327,72 +224,42 @@ function HeroVisual($$payload, $$props) {
   $$payload.out += `<!--]--></div></div>`;
   pop();
 }
+function Introduction($$payload) {
+  $$payload.out += `<h2 id="introduction">Introduction</h2> <p>Manifolds are fundamental mathematical objects that have become increasingly important 
+	in understanding the structure of high-dimensional data and neural network representations. 
+	A manifold is a topological space that locally resembles Euclidean space, providing a 
+	powerful framework for understanding complex, nonlinear structures in data <d-cite key="tenenbaum2000global"></d-cite>.</p> <p>The study of manifolds in machine learning has revealed that many high-dimensional 
+	datasets actually lie on or near low-dimensional manifolds embedded in the ambient space <d-cite key="roweis2000nonlinear"></d-cite>. This insight has led to the development of 
+	manifold learning algorithms that can discover these underlying structures and perform 
+	dimensionality reduction while preserving the essential geometric properties of the data <d-cite key="belkin2003laplacian"></d-cite>.</p> <p>In the context of artificial intelligence, manifolds provide a geometric perspective on 
+	how neural networks organize and represent information. Recent work has shown that the 
+	activations of deep neural networks often lie on smooth manifolds, and understanding 
+	these geometric structures is crucial for interpretability and robustness <d-cite key="raghunathan2019understanding"></d-cite>.</p>`;
+}
+function MathematicalNotation($$payload) {
+  $$payload.out += `<h2 id="mathematical-notation">Mathematical Notation</h2> <p>You can include LaTeX math notation: $f(x) = \\sum_{i=1}^{n} w_i x_i + b$
+	This inline math rendering makes it easy to discuss mathematical concepts
+	within the flow of text.</p> <h3 id="equations">Display Equations</h3> <p>Or display equations for more complex mathematical expressions:</p> <d-math block="">\\frac{\\partial L}{\\partial w_i} = \\frac{1}{m} \\sum_{j=1}^{m} (h_\\theta(x^{(j)}) - y^{(j)}) x_i^{(j)}</d-math> <p>This gradient descent equation shows how we update weights in neural networks.
+	The beauty of mathematical typesetting enhances comprehension of complex formulas.</p>`;
+}
+function Conclusion($$payload) {
+  $$payload.out += `<h2 id="conclusion">Conclusion</h2> <p>This template gives you a solid foundation for creating Distill-style articles 
+	with Svelte. You can now add your own interactive components and visualizations.
+	The combination provides both beautiful typography and modern interactivity.</p> <p>Notice how the table of contents has tracked your reading progress throughout
+	this article. The progress bar shows how far you've come, and the active
+	section highlighting helps you stay oriented within the document structure.</p> <p>With these tools, you can create engaging, interactive academic content
+	that brings ideas to life through visualization and direct manipulation.
+	The future of academic publishing is interactive, and this template
+	provides a foundation for that future.</p>`;
+}
+function References($$payload) {
+  $$payload.out += `<h2 id="references">References</h2> <p>The references below provide a comprehensive overview of manifold learning, 
+	differential geometry, and their applications in machine learning and AI.</p> <d-citation-list></d-citation-list>`;
+}
 function _page($$payload) {
-  const scatterData = [
-    {
-      x: 2.5,
-      y: 3.2,
-      label: "Neural Network A",
-      category: "Deep Learning"
-    },
-    {
-      x: 1.8,
-      y: 2.9,
-      label: "Random Forest",
-      category: "Ensemble"
-    },
-    {
-      x: 3.1,
-      y: 4.1,
-      label: "SVM",
-      category: "Kernel Methods"
-    },
-    {
-      x: 2.2,
-      y: 3.8,
-      label: "Neural Network B",
-      category: "Deep Learning"
-    },
-    {
-      x: 1.5,
-      y: 2.1,
-      label: "Decision Tree",
-      category: "Tree-based"
-    },
-    {
-      x: 3.8,
-      y: 4.5,
-      label: "Transformer",
-      category: "Deep Learning"
-    },
-    {
-      x: 2.8,
-      y: 3.5,
-      label: "Gradient Boosting",
-      category: "Ensemble"
-    },
-    {
-      x: 1.2,
-      y: 1.8,
-      label: "Linear Regression",
-      category: "Linear"
-    },
-    {
-      x: 3.5,
-      y: 4.2,
-      label: "CNN",
-      category: "Deep Learning"
-    },
-    {
-      x: 2,
-      y: 2.7,
-      label: "Logistic Regression",
-      category: "Linear"
-    }
-  ];
   head($$payload, ($$payload2) => {
-    $$payload2.title = `<title>My Distill Blog</title>`;
-    $$payload2.out += `<meta name="description" content="A Distill-style blog built with Svelte"/> <style>
+    $$payload2.title = `<title>An interactive explainer on manifolds</title>`;
+    $$payload2.out += `<meta name="description" content="What are manifolds?"/> <link rel="stylesheet" href="https://distill.pub/template.v2.css"/> <script src="https://distill.pub/template.v2.js"><\/script> <style>
 		/* Global styles for Distill content */
 		.figure-content {
 			padding: 2rem;
@@ -460,6 +327,103 @@ function _page($$payload) {
 			color: #666;
 			font-weight: 300;
 		}
+		
+		/* Custom front matter styling - condensed version */
+		.custom-front-matter {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin: 1rem 0;
+			padding: 1rem 0;
+			border-top: 1px solid #e0e0e0;
+			flex-direction: row;
+			margin-left: 1rem;
+		}
+		
+		.custom-front-matter .authors-section {
+			flex: 1;
+			margin-right: 2rem;
+		}
+		
+		.custom-front-matter .affiliations-section {
+			flex: 0 0 150px;
+		}
+		
+		.custom-front-matter .section-title {
+			font-size: 0.65rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.3px;
+			color: #888;
+			margin-bottom: 0.25rem;
+		}
+		
+		.custom-front-matter .authors-list {
+			font-size: 0.8rem;
+			line-height: 1.2;
+			color: #333;
+			margin-bottom: 0.5rem;
+		}
+		
+		.custom-front-matter .authors-list a {
+			color: #333;
+			text-decoration: none;
+		}
+		
+		.custom-front-matter .authors-list a:hover {
+			text-decoration: underline;
+		}
+		
+		.custom-front-matter .affiliations-list {
+			font-size: 0.8rem;
+			line-height: 1.2;
+			color: #333;
+			margin-bottom: 0.75rem;
+		}
+		
+		.custom-front-matter .affiliations-list a {
+			color: #333;
+			text-decoration: none;
+		}
+		
+		.custom-front-matter .affiliations-list a:hover {
+			text-decoration: underline;
+		}
+		
+		.custom-front-matter .published-info {
+			font-size: 0.8rem;
+			line-height: 1.2;
+			color: #333;
+		}
+		
+		.custom-front-matter .footnotes {
+			font-size: 0.7rem;
+			color: #666;
+			line-height: 1.2;
+			margin-top: 0.25rem;
+		}
+		
+		.custom-front-matter .footnotes p {
+			margin: 0.1rem 0;
+		}
+		
+		/* Responsive design for front matter */
+		@media (max-width: 768px) {
+			.custom-front-matter {
+				flex-direction: column;
+				gap: 0.75rem;
+				margin: 0.75rem 0;
+				padding: 0.75rem 0;
+			}
+			
+			.custom-front-matter .authors-section {
+				margin-right: 0;
+			}
+			
+			.custom-front-matter .affiliations-section {
+				flex: none;
+			}
+		}
 	</style>`;
   });
   TableOfContents($$payload);
@@ -467,65 +431,32 @@ function _page($$payload) {
   HeroVisual($$payload);
   $$payload.out += `<!----> <d-front-matter><script type="text/json">
 	{
-		"title": "Interactive Machine Learning Visualization",
-		"description": "An exploration of neural networks with interactive components",
+		"title": "Why does curvature matter for AI interpretability?",
+		"description": "An interactive exploration of manifolds and subspaces in representation spaces of large language models",
 		"authors": [
 			{
 				"author": "Shivam Raval",
 				"authorURL": "https://shivam-raval96.github.io/",
-				"affiliation": "Harvard University/TW",
-				"affiliationURL": "https://yourorg.com"
+				"affiliation": "Harvard University",
+				"affiliationURL": "https://harvard.edu"
 			}
 		],
 		"katex": {
 			"delimiters": [
 				{"left": "$", "right": "$", "display": false}
 			]
-		}
+		},
+		"bibliography": "bibliography.bib"
 	}
-	<\/script><!----></d-front-matter> <d-title><h1>Interactive Machine Learning Visualization</h1> <p>Understanding neural networks through interactive exploration</p></d-title> <d-byline></d-byline> <d-article><h2 id="introduction">Introduction</h2> <p>This is an example of how to create a Distill-style article using Svelte. 
-		You can include interactive visualizations, mathematical equations, and rich media.
-		This article demonstrates the integration of modern web technologies with 
-		academic publishing standards.</p> <p>The combination of Svelte's reactive framework with Distill's beautiful 
-		typography creates an engaging reading experience. Notice how the table 
-		of contents on the left tracks your progress through the article.</p> <h2 id="interactive-visualization">Interactive Visualization</h2> <p>Below is an interactive D3.js scatterplot showing different machine learning models 
-		plotted by their performance metrics. Hover over each point to see details.
-		This visualization demonstrates how complex data can be made accessible through
-		interactive elements.</p> <d-figure id="ml-scatterplot">`;
-  D3ScatterPlot($$payload, { data: scatterData, width: 700, height: 450 });
-  $$payload.out += `<!----> <figcaption>Interactive scatterplot of machine learning models. Each point represents a different 
-			algorithm, colored by category. Hover to see model details and performance metrics.</figcaption></d-figure> <p>The visualization above shows how different machine learning algorithms 
-		perform across various metrics. Deep learning models tend to cluster 
-		in the upper right, while simpler linear models appear in the lower left.</p> <h2 id="interactive-components">Interactive Components</h2> <p>Here's how you can add interactive elements. The Distill template provides 
-		special components for figures, equations, and citations. These components
-		are designed to enhance the reader's understanding through direct manipulation.</p> <d-figure id="example-figure"><figure><div class="figure-content"><p>This is where you'd put your interactive visualization or chart.</p> <button class="distill-button">Click me!</button></div> <figcaption>An example of an interactive figure. You can replace this with any Svelte component.</figcaption></figure></d-figure> <h2 id="mathematical-notation">Mathematical Notation</h2> <p>You can include LaTeX math notation: $f(x) = \\sum_{i=1}^{n} w_i x_i + b$
-		This inline math rendering makes it easy to discuss mathematical concepts
-		within the flow of text.</p> <h3 id="equations">Display Equations</h3> <p>Or display equations for more complex mathematical expressions:</p> <d-math block="">\\frac{\\partial L}{\\partial w_i} = \\frac{1}{m} \\sum_{j=1}^{m} (h_\\theta(x^{(j)}) - y^{(j)}) x_i^{(j)}</d-math> <p>This gradient descent equation shows how we update weights in neural networks.
-		The beauty of mathematical typesetting enhances comprehension of complex formulas.</p> <h2 id="code-blocks">Code Blocks</h2> <p>Code blocks with syntax highlighting help readers understand implementation details.
-		The following example shows a simple neural network implementation in Python.</p> <d-code block="" language="python">import numpy as np
-import matplotlib.pyplot as plt
-
-def neural_network(x, weights, bias):
-    return np.tanh(np.dot(x, weights) + bias)
-
-# Example usage
-x = np.random.randn(100, 10)
-weights = np.random.randn(10, 5)
-bias = np.random.randn(5)
-output = neural_network(x, weights, bias)</d-code> <h3 id="syntax-highlighting">Syntax Highlighting</h3> <p>The syntax highlighting makes code more readable and helps identify 
-		different language constructs. This is particularly useful when 
-		explaining algorithms or providing implementation examples.</p> <h2 id="side-notes">Side Notes</h2> <p>You can add side notes and margin content <d-footnote>This is a footnote that appears in the margin. It provides 
-		additional context without interrupting the main narrative flow.</d-footnote> to provide additional context without interrupting the main flow.
-		These margin notes are perfect for tangential information.</p> <h3 id="footnotes">Footnotes &amp; Margin Content</h3> <p>Footnotes and margin content allow for a layered reading experience.
-		Readers can choose to engage with supplementary information or focus
-		on the main narrative thread.</p> <h2 id="conclusion">Conclusion</h2> <p>This template gives you a solid foundation for creating Distill-style articles 
-		with Svelte. You can now add your own interactive components and visualizations.
-		The combination provides both beautiful typography and modern interactivity.</p> <p>Notice how the table of contents has tracked your reading progress throughout
-		this article. The progress bar shows how far you've come, and the active
-		section highlighting helps you stay oriented within the document structure.</p> <p>With these tools, you can create engaging, interactive academic content
-		that brings ideas to life through visualization and direct manipulation.
-		The future of academic publishing is interactive, and this template
-		provides a foundation for that future.</p></d-article> <d-appendix><h3>Acknowledgments</h3> <p>Thanks to the Distill team for creating the beautiful template.</p> <d-footnote-list></d-footnote-list> <d-citation-list></d-citation-list></d-appendix>`;
+	<\/script><!----></d-front-matter> <d-title><h1>Why does curvature matter for AI interpretability?</h1> <p>An interactive exploration of manifolds and subspaces in representation spaces of large language models.</p></d-title> <div class="custom-front-matter"><div class="authors-section"><div class="section-title">Authors</div> <div class="authors-list"><a href="https://shivam-raval96.github.io/">Shivam Raval*</a>,</div> <div class="footnotes"><p>* Correspondence to: sraval@g.harvard.edu</p></div></div> <div class="affiliations-section"><div class="section-title">Affiliations</div> <div class="affiliations-list"><a href="https://harvard.edu">Harvard University</a><br/> <a href="https://mit.edu">Thoughworks</a></div> <div class="section-title">Published</div> <div class="published-info">TBD</div></div></div> <d-article>`;
+  Introduction($$payload);
+  $$payload.out += `<!----> `;
+  MathematicalNotation($$payload);
+  $$payload.out += `<!----> `;
+  Conclusion($$payload);
+  $$payload.out += `<!----> `;
+  References($$payload);
+  $$payload.out += `<!----></d-article> <d-appendix><h3>Acknowledgments</h3> <p>Thanks to the Distill team for creating the beautiful template.</p> <d-footnote-list></d-footnote-list> <d-citation-list></d-citation-list></d-appendix>`;
 }
 export {
   _page as default

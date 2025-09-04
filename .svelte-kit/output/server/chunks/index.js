@@ -159,15 +159,6 @@ function slot(payload, $$props, name, slot_props, fallback_fn) {
     slot_fn(payload, slot_props);
   }
 }
-function bind_props(props_parent, props_now) {
-  for (const key in props_now) {
-    const initial_value = props_parent[key];
-    const value = props_now[key];
-    if (initial_value === void 0 && value !== void 0 && Object.getOwnPropertyDescriptor(props_parent, key)?.set) {
-      props_parent[key] = value;
-    }
-  }
-}
 function ensure_array_like(array_like_or_iterator) {
   if (array_like_or_iterator) {
     return array_like_or_iterator.length !== void 0 ? array_like_or_iterator : Array.from(array_like_or_iterator);
@@ -184,12 +175,11 @@ export {
   escape_html as e,
   current_component as f,
   getContext as g,
-  head as h,
-  bind_props as i,
-  ensure_array_like as j,
-  attr_style as k,
-  attr_class as l,
-  stringify as m,
+  ensure_array_like as h,
+  head as i,
+  attr_style as j,
+  attr_class as k,
+  stringify as l,
   push as p,
   render as r,
   setContext as s

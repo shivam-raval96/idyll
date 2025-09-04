@@ -16,7 +16,6 @@
     "file": "chunks/exports.js",
     "name": "exports",
     "imports": [
-      "_utils.js",
       "_equality.js"
     ]
   },
@@ -28,14 +27,9 @@
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_utils.js",
       "_equality.js",
       "_index.js"
     ]
-  },
-  "_utils.js": {
-    "file": "chunks/utils.js",
-    "name": "utils"
   },
   "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
@@ -44,7 +38,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_utils.js",
+      "_equality.js",
       "_exports.js"
     ]
   },
@@ -82,8 +76,7 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
-      "_utils.js"
+      "_index.js"
     ],
     "css": [
       "_app/immutable/assets/_page.DSraj30H.css"
