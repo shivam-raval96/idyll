@@ -1,2 +1,2 @@
 # idyll
-nteractive Distill-style article on manifold visualization
+Interactive Distill-style article on manifold visualization
