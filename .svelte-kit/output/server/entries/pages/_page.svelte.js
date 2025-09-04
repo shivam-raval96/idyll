@@ -317,7 +317,7 @@ function HeroVisual($$payload, $$props) {
   head($$payload, ($$payload2) => {
     $$payload2.out += `<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script><!---->`;
   });
-  $$payload.out += `<div class="hero-container svelte-1q2hg5u"><div class="info-overlay svelte-1q2hg5u"><div class="title svelte-1q2hg5u">A low dimensional manifold</div> <div class="instructions svelte-1q2hg5u">LLM activations live on curves surfaces like this surface.</div> <div class="status svelte-1q2hg5u">TBD</div></div> <div class="visual-container svelte-1q2hg5u">`;
+  $$payload.out += `<div class="hero-container svelte-pz775c"><div class="info-overlay svelte-pz775c"><div class="title svelte-pz775c">A low dimensional manifold</div> <div class="instructions svelte-pz775c">LLM activations live on curves surfaces like this surface.</div> <div class="status svelte-pz775c">TBD</div></div> <div class="visual-container svelte-pz775c">`;
   if (typeof THREE === "undefined") {
     $$payload.out += "<!--[-->";
     $$payload.out += `<div class="loading-message">Loading 3D visualization...</div>`;
@@ -436,6 +436,12 @@ function _page($$payload) {
 			line-height: 1.6;
 			font-size: 18px;
 			color: #333;
+		}
+		
+		/* Ensure hero visual stays within content bounds */
+		:global(.hero-container) {
+			max-width: 100%;
+			overflow: hidden;
 		}
 		
 		:global(d-title) {

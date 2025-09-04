@@ -78,6 +78,10 @@
 		renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 		renderer.setSize(container.clientWidth, container.clientHeight);
 		renderer.setClearColor(0x000000, 0);
+		// Ensure canvas stays within container bounds
+		renderer.domElement.style.width = '100%';
+		renderer.domElement.style.height = '100%';
+		renderer.domElement.style.display = 'block';
 		container.appendChild(renderer.domElement);
 
 		// Add basic lighting
@@ -494,12 +498,17 @@
 		overflow: hidden;
 		margin: 2rem 0;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		/* Ensure proper positioning relative to sidebar */
+		box-sizing: border-box;
 	}
 	
 	.visual-container {
 		width: 100%;
 		height: 100%;
 		position: relative;
+		overflow: hidden;
+		/* Ensure canvas stays within bounds */
+		box-sizing: border-box;
 	}
 	
 	.info-overlay {
@@ -604,6 +613,15 @@
 		padding: 20px 30px;
 		border-radius: 10px;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	}
+	
+	/* Ensure proper layout with sidebar */
+	@media (min-width: 1201px) {
+		.hero-container {
+			/* Account for sidebar width - ensure it doesn't overlap */
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
 	
 	/* Responsive adjustments */

@@ -68,6 +68,12 @@
 			color: #333;
 		}
 		
+		/* Ensure hero visual stays within content bounds */
+		:global(.hero-container) {
+			max-width: 100%;
+			overflow: hidden;
+		}
+		
 		:global(d-title) {
 			margin-bottom: 2rem;
 		}
