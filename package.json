@@ -2,7 +2,7 @@
 	"name": "my-distill-blog",
 	"version": "0.0.1",
 	"private": true,
-	"homepage": "https://mozartfish.github.io/idyll",
+	"homepage": "https://shivam-raval96.github.io/idyll",
 	"scripts": {
 		"build": "vite build",
 		"dev": "vite dev",
