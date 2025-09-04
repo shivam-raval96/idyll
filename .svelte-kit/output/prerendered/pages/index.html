@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- Load Distill CSS -->
+		<link rel="stylesheet" href="https://distill.pub/template.v2.css">
+		
+		
+		<link href="./_app/immutable/assets/0.DRixais7.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.B27QArwj.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.DwjJf67W.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C4tyFYtb.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Bi5EmiG7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.DSejAKaC.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BvO4f8lS.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/H_k49oe3.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/B2PaAi5o.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DGSF2OSM.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/mMqUwDix.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.D3I0M_L8.js"><!--[--><meta name="description" content="A Distill-style blog built with Svelte"/> <style>
+		/* Global styles for Distill content */
+		.figure-content {
+			padding: 2rem;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			text-align: center;
+			background: #f9f9f9;
+		}
+		
+		.distill-button {
+			background: #ee627a;
+			color: white;
+			border: none;
+			padding: 0.5rem 1rem;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 1rem;
+		}
+		
+		.distill-button:hover {
+			background: #d55a6e;
+		}
+		
+		/* Add padding to content sections for better spacing */
+		:global(d-article h2) {
+			margin-top: 3rem;
+			margin-bottom: 1.5rem;
+		}
+		
+		:global(d-article h3) {
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+		
+		:global(d-article p) {
+			margin-bottom: 1.5rem;
+		}
+		
+		/* Ensure proper layout with sidebar */
+		:global(d-article) {
+			line-height: 1.6;
+			font-size: 18px;
+			color: #333;
+		}
+		
+		:global(d-title) {
+			margin-bottom: 2rem;
+		}
+		
+		:global(d-title h1) {
+			font-size: 2.5rem;
+			font-weight: 300;
+			margin-bottom: 1rem;
+			color: #013d4f;
+		}
+		
+		:global(d-title p) {
+			font-size: 1.2rem;
+			color: #666;
+			font-weight: 300;
+		}
+	</style><!--]--><!--[--><style>
+		.toc-container {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 280px;
+			height: 100vh;
+			overflow-y: auto;
+			background: white;
+			border-right: 1px solid #e0e0e0;
+			padding: 20px;
+			z-index: 10;
+			box-sizing: border-box;
+		}
+		
+		.toc-progress-container {
+			position: relative;
+			padding-left: 20px;
+		}
+		
+		.toc-progress-bar {
+			position: absolute;
+			left: 8px;
+			top: 0;
+			bottom: 0;
+			width: 3px;
+			background: rgba(1, 61, 79, 0.08);
+			border-radius: 2px;
+		}
+		
+		.toc-progress-fill {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			background: linear-gradient(180deg, #ee627a, #d55a6e);
+			transition: height 0.3s ease;
+			border-radius: 2px;
+		}
+		
+		.toc-progress-indicator {
+			position: absolute;
+			left: -5px;
+			width: 12px;
+			height: 12px;
+			background: #ee627a;
+			border: 2px solid white;
+			border-radius: 50%;
+			box-shadow: 0 2px 6px rgba(238, 98, 122, 0.3);
+			transition: top 0.3s ease;
+			z-index: 2;
+		}
+		
+		.toc-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.toc-item {
+			margin-bottom: 8px;
+		}
+		
+		.toc-link {
+			display: block;
+			padding: 6px 12px;
+			text-decoration: none;
+			color: #666;
+			font-size: 14px;
+			line-height: 1.4;
+			border-radius: 4px;
+			transition: all 0.2s ease;
+			cursor: pointer;
+		}
+		
+		.toc-link:hover {
+			background: rgba(238, 98, 122, 0.1);
+			color: #333;
+		}
+		
+		.toc-link.active {
+			background: rgba(238, 98, 122, 0.15);
+			color: #ee627a;
+			font-weight: 600;
+		}
+		
+		.toc-link.level-1 {
+			font-weight: 500;
+			margin-left: 0;
+		}
+		
+		.toc-link.level-2 {
+			font-size: 13px;
+			margin-left: 16px;
+			color: #888;
+		}
+		
+		.toc-link.level-2.active {
+			color: #ee627a;
+		}
+		
+		.toc-title {
+			font-size: 18px;
+			font-weight: 600;
+			color: #013d4f;
+			margin-bottom: 20px;
+			padding: 0 12px;
+			border-bottom: 2px solid #ee627a;
+			padding-bottom: 10px;
+		}
+		
+		/* Hide TOC on small screens */
+		@media (max-width: 1200px) {
+			.toc-container {
+				display: none;
+			}
+		}
+		
+		/* Adjust main content margin when TOC is visible */
+		@media (min-width: 1201px) {
+			:global(body) {
+				margin-left: 280px;
+			}
+			
+			:global(d-article) {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+		}
+	</style><!--]--><!--[--><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><!----><!--]--><!--[--><style>
+		.d3-tooltip {
+			position: absolute;
+			text-align: left;
+			padding: 8px;
+			font-size: 12px;
+			background: rgba(0, 0, 0, 0.8);
+			color: white;
+			border: 0px;
+			border-radius: 4px;
+			pointer-events: none;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+		}
+		
+		.scatterplot-container {
+			display: flex;
+			justify-content: center;
+			margin: 20px 0;
+		}
+		
+		.dot {
+			transition: all 0.2s ease;
+		}
+		
+		.dot:hover {
+			filter: brightness(1.2);
+		}
+	</style><!--]--><title>My Distill Blog</title>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[--><!----><main class="svelte-12lf3ey"><!----><!----><div class="toc-container"><div class="toc-progress-container"><div class="toc-progress-bar"><div class="toc-progress-fill" style="height: 0%"></div> <div class="toc-progress-indicator" style="top: 0%"></div></div> <div class="toc-title">Contents</div> <ul class="toc-list"><!--[--><li class="toc-item"><a class="toc-link level-1 ">Introduction</a></li><li class="toc-item"><a class="toc-link level-1 ">Interactive Visualization</a></li><li class="toc-item"><a class="toc-link level-1 ">Interactive Components</a></li><li class="toc-item"><a class="toc-link level-1 ">Mathematical Notation</a></li><li class="toc-item"><a class="toc-link level-2 ">Display Equations</a></li><li class="toc-item"><a class="toc-link level-1 ">Code Blocks</a></li><li class="toc-item"><a class="toc-link level-2 ">Syntax Highlighting</a></li><li class="toc-item"><a class="toc-link level-1 ">Side Notes</a></li><li class="toc-item"><a class="toc-link level-2 ">Footnotes &amp; Margin Content</a></li><li class="toc-item"><a class="toc-link level-1 ">Conclusion</a></li><!--]--></ul></div></div><!----> <div class="hero-container svelte-1q2hg5u"><div class="info-overlay svelte-1q2hg5u"><div class="title svelte-1q2hg5u">A low dimensional manifold</div> <div class="instructions svelte-1q2hg5u">LLM activations live on curves surfaces like this surface.</div> <div class="status svelte-1q2hg5u">TBD</div></div> <div class="visual-container svelte-1q2hg5u"><!--[--><div class="loading-message">Loading 3D visualization...</div><!--]--></div></div><!----> <d-front-matter><script type="text/json">
+	{
+		"title": "Interactive Machine Learning Visualization",
+		"description": "An exploration of neural networks with interactive components",
+		"authors": [
+			{
+				"author": "Shivam Raval",
+				"authorURL": "https://shivam-raval96.github.io/",
+				"affiliation": "Harvard University/TW",
+				"affiliationURL": "https://yourorg.com"
+			}
+		],
+		"katex": {
+			"delimiters": [
+				{"left": "$", "right": "$", "display": false}
+			]
+		}
+	}
+	</script><!----></d-front-matter> <d-title><h1>Interactive Machine Learning Visualization</h1> <p>Understanding neural networks through interactive exploration</p></d-title> <d-byline></d-byline> <d-article><h2 id="introduction">Introduction</h2> <p>This is an example of how to create a Distill-style article using Svelte. 
+		You can include interactive visualizations, mathematical equations, and rich media.
+		This article demonstrates the integration of modern web technologies with 
+		academic publishing standards.</p> <p>The combination of Svelte's reactive framework with Distill's beautiful 
+		typography creates an engaging reading experience. Notice how the table 
+		of contents on the left tracks your progress through the article.</p> <h2 id="interactive-visualization">Interactive Visualization</h2> <p>Below is an interactive D3.js scatterplot showing different machine learning models 
+		plotted by their performance metrics. Hover over each point to see details.
+		This visualization demonstrates how complex data can be made accessible through
+		interactive elements.</p> <d-figure id="ml-scatterplot"><div class="scatterplot-container"><svg></svg></div><!----> <figcaption>Interactive scatterplot of machine learning models. Each point represents a different 
+			algorithm, colored by category. Hover to see model details and performance metrics.</figcaption></d-figure> <p>The visualization above shows how different machine learning algorithms 
+		perform across various metrics. Deep learning models tend to cluster 
+		in the upper right, while simpler linear models appear in the lower left.</p> <h2 id="interactive-components">Interactive Components</h2> <p>Here's how you can add interactive elements. The Distill template provides 
+		special components for figures, equations, and citations. These components
+		are designed to enhance the reader's understanding through direct manipulation.</p> <d-figure id="example-figure"><figure><div class="figure-content"><p>This is where you'd put your interactive visualization or chart.</p> <button class="distill-button">Click me!</button></div> <figcaption>An example of an interactive figure. You can replace this with any Svelte component.</figcaption></figure></d-figure> <h2 id="mathematical-notation">Mathematical Notation</h2> <p>You can include LaTeX math notation: $f(x) = \sum_{i=1}^{n} w_i x_i + b$
+		This inline math rendering makes it easy to discuss mathematical concepts
+		within the flow of text.</p> <h3 id="equations">Display Equations</h3> <p>Or display equations for more complex mathematical expressions:</p> <d-math block="">\frac{\partial L}{\partial w_i} = \frac{1}{m} \sum_{j=1}^{m} (h_\theta(x^{(j)}) - y^{(j)}) x_i^{(j)}</d-math> <p>This gradient descent equation shows how we update weights in neural networks.
+		The beauty of mathematical typesetting enhances comprehension of complex formulas.</p> <h2 id="code-blocks">Code Blocks</h2> <p>Code blocks with syntax highlighting help readers understand implementation details.
+		The following example shows a simple neural network implementation in Python.</p> <d-code block="" language="python">import numpy as np
+import matplotlib.pyplot as plt
+
+def neural_network(x, weights, bias):
+    return np.tanh(np.dot(x, weights) + bias)
+
+# Example usage
+x = np.random.randn(100, 10)
+weights = np.random.randn(10, 5)
+bias = np.random.randn(5)
+output = neural_network(x, weights, bias)</d-code> <h3 id="syntax-highlighting">Syntax Highlighting</h3> <p>The syntax highlighting makes code more readable and helps identify 
+		different language constructs. This is particularly useful when 
+		explaining algorithms or providing implementation examples.</p> <h2 id="side-notes">Side Notes</h2> <p>You can add side notes and margin content <d-footnote>This is a footnote that appears in the margin. It provides 
+		additional context without interrupting the main narrative flow.</d-footnote> to provide additional context without interrupting the main flow.
+		These margin notes are perfect for tangential information.</p> <h3 id="footnotes">Footnotes &amp; Margin Content</h3> <p>Footnotes and margin content allow for a layered reading experience.
+		Readers can choose to engage with supplementary information or focus
+		on the main narrative thread.</p> <h2 id="conclusion">Conclusion</h2> <p>This template gives you a solid foundation for creating Distill-style articles 
+		with Svelte. You can now add your own interactive components and visualizations.
+		The combination provides both beautiful typography and modern interactivity.</p> <p>Notice how the table of contents has tracked your reading progress throughout
+		this article. The progress bar shows how far you've come, and the active
+		section highlighting helps you stay oriented within the document structure.</p> <p>With these tools, you can create engaging, interactive academic content
+		that brings ideas to life through visualization and direct manipulation.
+		The future of academic publishing is interactive, and this template
+		provides a foundation for that future.</p></d-article> <d-appendix><h3>Acknowledgments</h3> <p>Thanks to the Distill team for creating the beautiful template.</p> <d-footnote-list></d-footnote-list> <d-citation-list></d-citation-list></d-appendix><!----><!----></main><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1pl28pn = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/idyll"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.DwjJf67W.js"),
+						import("./_app/immutable/entry/app.DSejAKaC.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+		
+		<!-- Load Distill JS and handle initialization completely outside Svelte -->
+		<script src="https://distill.pub/template.v2.js"></script>
+		<script>
+			// Wait for everything to be completely loaded
+			window.addEventListener('load', function() {
+				// Additional delay to ensure SvelteKit hydration is complete
+				setTimeout(function() {
+					if (window.distill && typeof window.distill.reload === 'function') {
+						try {
+							window.distill.reload();
+						} catch (e) {
+							console.warn('Distill reload failed:', e);
+						}
+					}
+				}, 500);
+			});
+		</script>
+	</body>
+</html>
