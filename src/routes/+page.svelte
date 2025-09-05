@@ -90,102 +90,6 @@
 			font-weight: 300;
 		}
 		
-		/* Custom front matter styling - condensed version */
-		.custom-front-matter {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
-			margin: 1rem 0;
-			padding: 1rem 0;
-			border-top: 1px solid #e0e0e0;
-			flex-direction: row;
-			margin-left: 1rem;
-		}
-		
-		.custom-front-matter .authors-section {
-			flex: 1;
-			margin-right: 2rem;
-		}
-		
-		.custom-front-matter .affiliations-section {
-			flex: 0 0 150px;
-		}
-		
-		.custom-front-matter .section-title {
-			font-size: 0.65rem;
-			font-weight: 600;
-			text-transform: uppercase;
-			letter-spacing: 0.3px;
-			color: #888;
-			margin-bottom: 0.25rem;
-		}
-		
-		.custom-front-matter .authors-list {
-			font-size: 0.8rem;
-			line-height: 1.2;
-			color: #333;
-			margin-bottom: 0.5rem;
-		}
-		
-		.custom-front-matter .authors-list a {
-			color: #333;
-			text-decoration: none;
-		}
-		
-		.custom-front-matter .authors-list a:hover {
-			text-decoration: underline;
-		}
-		
-		.custom-front-matter .affiliations-list {
-			font-size: 0.8rem;
-			line-height: 1.2;
-			color: #333;
-			margin-bottom: 0.75rem;
-		}
-		
-		.custom-front-matter .affiliations-list a {
-			color: #333;
-			text-decoration: none;
-		}
-		
-		.custom-front-matter .affiliations-list a:hover {
-			text-decoration: underline;
-		}
-		
-		.custom-front-matter .published-info {
-			font-size: 0.8rem;
-			line-height: 1.2;
-			color: #333;
-		}
-		
-		.custom-front-matter .footnotes {
-			font-size: 0.7rem;
-			color: #666;
-			line-height: 1.2;
-			margin-top: 0.25rem;
-		}
-		
-		.custom-front-matter .footnotes p {
-			margin: 0.1rem 0;
-		}
-		
-		/* Responsive design for front matter */
-		@media (max-width: 768px) {
-			.custom-front-matter {
-				flex-direction: column;
-				gap: 0.75rem;
-				margin: 0.75rem 0;
-				padding: 0.75rem 0;
-			}
-			
-			.custom-front-matter .authors-section {
-				margin-right: 0;
-			}
-			
-			.custom-front-matter .affiliations-section {
-				flex: none;
-			}
-		}
 	</style>
 </svelte:head>
 
@@ -202,7 +106,7 @@
 			{
 				"author": "Shivam Raval",
 				"authorURL": "https://shivam-raval96.github.io/",
-				"affiliation": "Harvard University",
+				"affiliation": "Harvard University, Thoughworks",
 				"affiliationURL": "https://harvard.edu"
 			}
 		],
@@ -222,29 +126,7 @@
 </d-title>
 
 
-<div class="custom-front-matter">
-	<div class="authors-section">
-		<div class="section-title">Authors</div>
-		<div class="authors-list">
-			<a href="https://shivam-raval96.github.io/">Shivam Raval*</a>, 
-			
-		</div>
-		<div class="footnotes">
-			<p>* Correspondence to: sraval@g.harvard.edu</p>
-		</div>
-	</div>
-	
-	<div class="affiliations-section">
-		<div class="section-title">Affiliations</div>
-		<div class="affiliations-list">
-			<a href="https://harvard.edu">Harvard University</a><br>
-			<a href="https://mit.edu">Thoughworks</a>
-		</div>
-		
-		<div class="section-title">Published</div>
-		<div class="published-info">TBD</div>
-	</div>
-</div>
+<d-byline></d-byline>
 
 
 

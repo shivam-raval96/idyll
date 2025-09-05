@@ -329,7 +329,7 @@ function _page($$payload) {
 		}
 		
 		/* Custom front matter styling - condensed version */
-		.custom-front-matter {
+		:global(.custom-front-matter) {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-start;
@@ -340,16 +340,16 @@ function _page($$payload) {
 			margin-left: 1rem;
 		}
 		
-		.custom-front-matter .authors-section {
+		:global(.custom-front-matter) .authors-section {
 			flex: 1;
 			margin-right: 2rem;
 		}
 		
-		.custom-front-matter .affiliations-section {
+		:global(.custom-front-matter) .affiliations-section {
 			flex: 0 0 150px;
 		}
 		
-		.custom-front-matter .section-title {
+		:global(.custom-front-matter) .section-title {
 			font-size: 0.65rem;
 			font-weight: 600;
 			text-transform: uppercase;
@@ -358,69 +358,69 @@ function _page($$payload) {
 			margin-bottom: 0.25rem;
 		}
 		
-		.custom-front-matter .authors-list {
+		:global(.custom-front-matter) .authors-list {
 			font-size: 0.8rem;
 			line-height: 1.2;
 			color: #333;
 			margin-bottom: 0.5rem;
 		}
 		
-		.custom-front-matter .authors-list a {
+		:global(.custom-front-matter) .authors-list a {
 			color: #333;
 			text-decoration: none;
 		}
 		
-		.custom-front-matter .authors-list a:hover {
+		:global(.custom-front-matter) .authors-list a:hover {
 			text-decoration: underline;
 		}
 		
-		.custom-front-matter .affiliations-list {
+		:global(.custom-front-matter) .affiliations-list {
 			font-size: 0.8rem;
 			line-height: 1.2;
 			color: #333;
 			margin-bottom: 0.75rem;
 		}
 		
-		.custom-front-matter .affiliations-list a {
+		:global(.custom-front-matter) .affiliations-list a {
 			color: #333;
 			text-decoration: none;
 		}
 		
-		.custom-front-matter .affiliations-list a:hover {
+		:global(.custom-front-matter) .affiliations-list a:hover {
 			text-decoration: underline;
 		}
 		
-		.custom-front-matter .published-info {
+		:global(.custom-front-matter) .published-info {
 			font-size: 0.8rem;
 			line-height: 1.2;
 			color: #333;
 		}
 		
-		.custom-front-matter .footnotes {
+		:global(.custom-front-matter) .footnotes {
 			font-size: 0.7rem;
 			color: #666;
 			line-height: 1.2;
 			margin-top: 0.25rem;
 		}
 		
-		.custom-front-matter .footnotes p {
+		:global(.custom-front-matter) .footnotes p {
 			margin: 0.1rem 0;
 		}
 		
 		/* Responsive design for front matter */
 		@media (max-width: 768px) {
-			.custom-front-matter {
+			:global(.custom-front-matter) {
 				flex-direction: column;
 				gap: 0.75rem;
 				margin: 0.75rem 0;
 				padding: 0.75rem 0;
 			}
 			
-			.custom-front-matter .authors-section {
+			:global(.custom-front-matter .authors-section) {
 				margin-right: 0;
 			}
 			
-			.custom-front-matter .affiliations-section {
+			:global(.custom-front-matter .affiliations-section) {
 				flex: none;
 			}
 		}
